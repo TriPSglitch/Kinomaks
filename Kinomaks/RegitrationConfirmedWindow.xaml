@@ -1,0 +1,13 @@
+﻿<Window x:Class="Kinomaks.RegitrationConfirmedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kinomaks"
+        mc:Ignorable="d"
+        Title="RegitrationConfirmedWindow" Height="100" Width="175" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Button x:Name="BackButton" Content="Назад" VerticalAlignment="Top" HorizontalAlignment="Center" Height="30" Width="130" Margin="0,57,0,0" Click="BackClick"/>
+        <Label Content="Вы зарегистрировались" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top" Height="29" Width="140" Foreground="White"/>
+    </Grid>
+</Window>
