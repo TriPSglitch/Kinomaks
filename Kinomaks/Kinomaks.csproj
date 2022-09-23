@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,14 +64,86 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWindows\AddFilmWindow.xaml.cs">
+      <DependentUpon>AddFilmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connection.cs" />
+    <Compile Include="ElementsWindows\FilmWindow.xaml.cs">
+      <DependentUpon>FilmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Films.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FilmTimetable.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Hall.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HallTimetable.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KinomaksDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KinomaksDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KinomaksDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KinomaksDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KinomaksDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ListWindows\FilmsListWindow.xaml.cs">
+      <DependentUpon>FilmsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Places.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="RegitrationConfirmedWindow.xaml.cs">
       <DependentUpon>RegitrationConfirmedWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Timetable.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="Users.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
+    <Page Include="AddWindows\AddFilmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ElementsWindows\FilmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListWindows\FilmsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,6 +194,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="KinomaksDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KinomaksDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="KinomaksDB.edmx.diagram">
+      <DependentUpon>KinomaksDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,5 +210,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="KinomaksDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>KinomaksDB.Context.cs</LastGenOutput>
+      <DependentUpon>KinomaksDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="KinomaksDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KinomaksDB.edmx</DependentUpon>
+      <LastGenOutput>KinomaksDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

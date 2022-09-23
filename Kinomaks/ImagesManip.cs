@@ -35,40 +35,10 @@ namespace Kinomaks
             #endregion
         }
 
-        public static BitmapImage NewImage(Games game)
+        public static BitmapImage NewImage(Films film)
         {
             #region Декодирование картинки
-            MemoryStream ms = new MemoryStream(game.Logo);
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.StreamSource = ms;
-            image.EndInit();
-            return image;
-        }
-
-        public static BitmapImage NewImage(Players player)
-        {
-            MemoryStream ms = new MemoryStream(player.Photo);
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.StreamSource = ms;
-            image.EndInit();
-            return image;
-        }
-
-        public static BitmapImage NewImage(Teams team)
-        {
-            MemoryStream ms = new MemoryStream(team.Logo);
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.StreamSource = ms;
-            image.EndInit();
-            return image;
-        }
-
-        public static BitmapImage NewImage(Tournaments tournament)
-        {
-            MemoryStream ms = new MemoryStream(tournament.Logo);
+            MemoryStream ms = new MemoryStream(film.Logo);
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             image.StreamSource = ms;

@@ -23,11 +23,11 @@ namespace Kinomaks
             if (regRes)
             {
                 #region Результат и переход на окно авторизации
-                RegitrationConfirmedWindow rcw = new RegitrationConfirmedWindow();
-                rcw.Show();
+                RegitrationConfirmedWindow regitrationConfirmedWindow = new RegitrationConfirmedWindow();
+                regitrationConfirmedWindow.Show();
 
-                AuthorizationWindow aw = new AuthorizationWindow();
-                aw.Show();
+                AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+                authorizationWindow.Show();
                 this.Close();
                 #endregion
             }
@@ -38,28 +38,30 @@ namespace Kinomaks
             #region Валидация
             if (Login.Text == "" || Password.Password == "" || FirstName.Text == "" || SecondName.Text == "" || Email.Text == "")
             {
-                ErrorWindow ew = new ErrorWindow("пустые поля");
-                ew.Show();
+                ErrorWindow errorWindow = new ErrorWindow("пустые поля");
+                errorWindow.Show();
                 return false;
             }
             if (Connection.db.Users.Select(item => item.Login).Contains(Login.Text))
             {
-                ErrorWindow ew = new ErrorWindow("такой пользователь уже существует");
-                ew.Show();
+                ErrorWindow errorWindow = new ErrorWindow("такой пользователь уже существует");
+                errorWindow.Show();
                 return false;
             }
             if (!IsValidEmail(Email.Text))
             {
-                ErrorWindow ew = new ErrorWindow("неверный формат почты");
-                ew.Show();
+                ErrorWindow errorWindow = new ErrorWindow("неверный формат почты");
+                errorWindow.Show();
                 return false;
             }
             #endregion
 
 
             #region Добавление пользователя
-            Persons person = new Persons()
+            Users user = new Users()
             {
+                Login = Login.Text,
+                Password = Encrypt.Hash(Password.Password),
                 SecondName = SecondName.Text,
                 FirstName = FirstName.Text,
                 Email = Email.Text,
@@ -67,21 +69,12 @@ namespace Kinomaks
             };
             if (MiddleName.Text != "")
             {
-                person.MiddleName = MiddleName.Text;
+                user.MiddleName = MiddleName.Text;
             }
-
-            Connection.db.Persons.Add(person);
-            Connection.db.SaveChanges();
-
-            Users user = new Users()
-            {
-                IDPerson = Connection.db.Persons.Max(x => x.ID),
-                Login = Login.Text,
-                Password = Encrypt.Hash(Password.Password)
-            };
 
             Connection.db.Users.Add(user);
             Connection.db.SaveChanges();
+
             return true;
             #endregion
 
@@ -91,8 +84,8 @@ namespace Kinomaks
         private void BackClick(object sender, RoutedEventArgs e)
         {
             #region Назад
-            AuthorizationWindow aw = new AuthorizationWindow();
-            aw.Show();
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
             this.Close();
             #endregion
         }

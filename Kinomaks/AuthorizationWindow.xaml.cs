@@ -18,8 +18,8 @@ namespace Kinomaks
             #region Авторизация
             if (Authorization(Login.Text.ToString(), Password.Password.ToString()))
             {
-                MainWindow mw = new MainWindow();
-                mw.Show();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
                 this.Close();
             }
         }
@@ -28,22 +28,22 @@ namespace Kinomaks
         {
             if (Login.Text == "" || Password.Password == "")
             {
-                ErrorWindow ew = new ErrorWindow("пустые поля");
-                ew.Show();
+                ErrorWindow errorWindow = new ErrorWindow("пустые поля");
+                errorWindow.Show();
                 return false;
             }
             if (Connection.db.Users.Select(item => item.Login + " " + item.Password).Contains(Login.Text + " " + Encrypt.Hash(Password.Password)))
             {
-                int personID = Connection.db.Users.Where(users => users.Login == Login.Text).Select(users => users.IDPerson).FirstOrDefault();
-                int Role = Connection.db.Persons.Where(users => users.ID == personID).Select(users => users.IDRole).FirstOrDefault();
+                int userID = Connection.db.Users.Where(users => users.Login == Login.Text).Select(users => users.ID).FirstOrDefault();
+                int Role = Connection.db.Users.Where(users => users.ID == userID).Select(users => users.IDRole).FirstOrDefault();
                 User.Role = Role;
-                User.IDPerson = personID;
+                User.IDUser = userID;
                 return true;
             }
             else
             {
-                ErrorWindow ew = new ErrorWindow("неверный логин/пароль");
-                ew.Show();
+                ErrorWindow errorWindow = new ErrorWindow("неверный логин/пароль");
+                errorWindow.Show();
                 return false;
             }
             #endregion
@@ -52,8 +52,8 @@ namespace Kinomaks
         private void RegistrationClick(object sender, RoutedEventArgs e)
         {
             #region Переход на окно регистрации
-            RegistrationWindow rw = new RegistrationWindow();
-            rw.Show();
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
             this.Close();
             #endregion
         }
