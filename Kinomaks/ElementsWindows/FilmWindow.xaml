@@ -9,7 +9,7 @@
     <Grid>
         <Button Name="BackButton" Content="Назад" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Height="39" Width="140" FontSize="25" Click="BackButtonClick"/>
         <Label Content="Название:" HorizontalAlignment="Left" Margin="140,176,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <Label Name="Name" HorizontalAlignment="Left" Margin="322,176,0,0" VerticalAlignment="Top" Height="60" Width="700" FontSize="36" Foreground="#FF54E4FF"/>
+        <Label Name="Title" HorizontalAlignment="Left" Margin="322,176,0,0" VerticalAlignment="Top" Height="60" Width="700" FontSize="36" Foreground="#FF54E4FF"/>
         <Label Content="Описание:" HorizontalAlignment="Left" Margin="140,266,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
         <Label Name="Description" HorizontalAlignment="Left" Margin="140,337,0,0" VerticalAlignment="Top" Height="441" Width="884" FontSize="36" Foreground="#FF54E4FF"/>
         <Image Name="Logo" HorizontalAlignment="Left" Margin="1129,133,0,0" Width="411" Height="649" VerticalAlignment="Top"/>

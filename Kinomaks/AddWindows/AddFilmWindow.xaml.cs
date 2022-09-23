@@ -27,6 +27,7 @@ namespace Kinomaks.AddWindows
             mainWindow.Show();
             this.Close();
         }
+
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
             #region Добавление фильма

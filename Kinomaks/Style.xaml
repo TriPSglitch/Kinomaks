@@ -61,8 +61,8 @@
                 <EventTrigger.Actions>
                     <BeginStoryboard>
                         <Storyboard Duration="0:0:1" SpeedRatio="3" FillBehavior="HoldEnd">
-                            <DoubleAnimation Storyboard.TargetProperty="Background.RadiusY" To="1.0"/>
-                            <DoubleAnimation Storyboard.TargetProperty="Background.RadiusY" To="1.0"/>
+                            <!--<DoubleAnimation Storyboard.TargetName="{Binding ElementName=Border}" Storyboard.TargetProperty="Background.RadiusY" To="1.0"/>
+                            <DoubleAnimation Storyboard.TargetName="{Binding ElementName=Border}" Storyboard.TargetProperty="Background.RadiusY" To="1.0"/>-->
                             <DoubleAnimation Storyboard.TargetProperty="Effect.Opacity" To="0"/>
                         </Storyboard>
                     </BeginStoryboard>
@@ -74,8 +74,8 @@
                 <EventTrigger.Actions>
                     <BeginStoryboard>
                         <Storyboard Duration="0:0:1" SpeedRatio="3" FillBehavior="HoldEnd">
-                            <DoubleAnimation Storyboard.TargetProperty="Background.RadiusX" To="0"/>
-                            <DoubleAnimation Storyboard.TargetProperty="Background.RadiusY" To="0"/>
+                            <!--<DoubleAnimation Storyboard.TargetProperty="Background.RadiusX" To="0"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Background.RadiusY" To="0"/>-->
                             <DoubleAnimation Storyboard.TargetProperty="Effect.Opacity" To="1"/>
                         </Storyboard>
                     </BeginStoryboard>

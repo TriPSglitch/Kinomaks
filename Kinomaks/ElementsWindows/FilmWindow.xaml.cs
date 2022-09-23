@@ -14,7 +14,7 @@ namespace Kinomaks.ElementsWindows
         {
             InitializeComponent();
             film = Connection.db.Films.Where(item => item.ID == id).FirstOrDefault();
-            Name.Content = film.Title;
+            Title.Content = film.Title;
             Logo.Source = ImagesManip.NewImage(film);
         }
 

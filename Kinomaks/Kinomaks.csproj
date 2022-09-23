@@ -67,7 +67,13 @@
     <Compile Include="AddWindows\AddFilmWindow.xaml.cs">
       <DependentUpon>AddFilmWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddWindows\AddHallWindow.xaml.cs">
+      <DependentUpon>AddHallWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
+    <Compile Include="ElementsWindows\BuyingATicket.xaml.cs">
+      <DependentUpon>BuyingATicket.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ElementsWindows\FilmWindow.xaml.cs">
       <DependentUpon>FilmWindow.xaml</DependentUpon>
     </Compile>
@@ -127,7 +133,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddWindows\AddHallWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElementsWindows\BuyingATicket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
