@@ -24,6 +24,7 @@ namespace Kinomaks
         public string Title { get; set; }
         public string Descripton { get; set; }
         public byte[] Logo { get; set; }
+        public decimal Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmTimetable> FilmTimetable { get; set; }

@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8b0d1d93d7db4145821f30ef1bcb7518" Name="Diagram1">
-        <EntityTypeShape EntityType="KinomaksModel.Films" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+      <Diagram DiagramId="94c4894b896e40b88b092d51e142a2f1" Name="Diagram1">
+        <EntityTypeShape EntityType="KinomaksModel.Films" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="KinomaksModel.FilmTimetable" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KinomaksModel.Hall" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KinomaksModel.HallTimetable" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />

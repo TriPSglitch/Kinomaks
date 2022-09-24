@@ -70,12 +70,20 @@
     <Compile Include="AddWindows\AddHallWindow.xaml.cs">
       <DependentUpon>AddHallWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BuyCash.cs" />
+    <Compile Include="Buyer.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ElementsWindows\BuyingATicket.xaml.cs">
       <DependentUpon>BuyingATicket.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElementsWindows\FilmWindow.xaml.cs">
       <DependentUpon>FilmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementsWindows\PaymentMethod.xaml.cs">
+      <DependentUpon>PaymentMethod.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementsWindows\PaymentWindow.xaml.cs">
+      <DependentUpon>PaymentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Films.cs">
       <DependentUpon>KinomaksDB.tt</DependentUpon>
@@ -89,6 +97,7 @@
     <Compile Include="HallTimetable.cs">
       <DependentUpon>KinomaksDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="IBuy.cs" />
     <Compile Include="KinomaksDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +155,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ElementsWindows\FilmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElementsWindows\PaymentMethod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElementsWindows\PaymentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,10 +242,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="KinomaksDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KinomaksDB.Context.cs</LastGenOutput>
       <DependentUpon>KinomaksDB.edmx</DependentUpon>
+      <LastGenOutput>KinomaksDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="KinomaksDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -236,9 +256,5 @@
       <LastGenOutput>KinomaksDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

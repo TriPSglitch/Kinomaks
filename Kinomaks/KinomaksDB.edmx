@@ -13,6 +13,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Descripton" Type="nvarchar(max)" />
           <Property Name="Logo" Type="image" />
+          <Property Name="Price" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="FilmTimetable">
           <Key>
@@ -221,6 +222,7 @@
           <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="FilmTimetable" Relationship="Self.FK_FilmTimetable_Films" FromRole="Films" ToRole="FilmTimetable" />
         </EntityType>
         <EntityType Name="FilmTimetable">
@@ -443,6 +445,7 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Descripton" ColumnName="Descripton" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
