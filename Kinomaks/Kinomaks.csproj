@@ -85,6 +85,9 @@
     <Compile Include="ElementsWindows\PaymentWindow.xaml.cs">
       <DependentUpon>PaymentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ElementsWindows\TimetableWindow.xaml.cs">
+      <DependentUpon>TimetableWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Films.cs">
       <DependentUpon>KinomaksDB.tt</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ElementsWindows\PaymentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElementsWindows\TimetableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
