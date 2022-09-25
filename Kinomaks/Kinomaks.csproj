@@ -104,8 +104,8 @@
     <Compile Include="AddWindows\AddHallWindow.xaml.cs">
       <DependentUpon>AddHallWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddWindows\AddTimetable.xaml.cs">
-      <DependentUpon>AddTimetable.xaml</DependentUpon>
+    <Compile Include="AddWindows\AddTimetableWindow.xaml.cs">
+      <DependentUpon>AddTimetableWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BuyCash.cs" />
     <Compile Include="Buyer.cs" />
@@ -121,6 +121,9 @@
     </Compile>
     <Compile Include="ElementsWindows\PaymentWindow.xaml.cs">
       <DependentUpon>PaymentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementsWindows\ReturnWindow.xaml.cs">
+      <DependentUpon>ReturnWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElementsWindows\TimetableWindow.xaml.cs">
       <DependentUpon>TimetableWindow.xaml</DependentUpon>
@@ -186,7 +189,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddWindows\AddTimetable.xaml">
+    <Page Include="AddWindows\AddTimetableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ElementsWindows\PaymentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElementsWindows\ReturnWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

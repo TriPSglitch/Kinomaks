@@ -30,8 +30,8 @@ namespace Kinomaks
 
         private void AddTimetableClick(object sender, RoutedEventArgs e)
         {
-            //AddTimetableWindow addTimetableWindow = new AddTimetableWindow();
-            //addTimetableWindow.Show();
+            AddTimetableWindow addTimetableWindow = new AddTimetableWindow();
+            addTimetableWindow.Show();
             this.Close();
         }
 
@@ -55,6 +55,13 @@ namespace Kinomaks
         {
             TimetableWindow timetableWindow = new TimetableWindow();
             timetableWindow.Show();
+            this.Close();
+        }
+
+        private void ReturnClick(object sender, RoutedEventArgs e)
+        {
+            ReturnWindow returnWindow = new ReturnWindow();
+            returnWindow.Show();
             this.Close();
         }
         #endregion

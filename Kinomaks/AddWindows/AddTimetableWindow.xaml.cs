@@ -9,10 +9,10 @@ namespace Kinomaks.AddWindows
     /// <summary>
     /// Логика взаимодействия для AddTimetable.xaml
     /// </summary>
-    public partial class AddTimetable : Window
+    public partial class AddTimetableWindow : Window
     {
 
-        public AddTimetable()
+        public AddTimetableWindow()
         {
             InitializeComponent();
             Film.ItemsSource = Connection.db.Films.Select(items => items.Title).ToList();
