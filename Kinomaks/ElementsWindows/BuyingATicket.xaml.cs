@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System;
 
 namespace Kinomaks.ElementsWindows
 {
@@ -34,12 +35,13 @@ namespace Kinomaks.ElementsWindows
             Title.Content = film.Title;
             Logo.Source = ImagesManip.NewImage(film);
 
-            Time.Content = Connection.db.Timetable.Where(item => item.ID == idTimetable).Select(item => item.Time).FirstOrDefault();
+            Time.Content = Connection.db.Timetable.Where(item => item.ID == idTimetable).Select(item => item.Time + " " + item.Date).FirstOrDefault();
 
-            hall = Connection.db.HallTimetable.Where(item => item.IDTimetable == idTimetable).Select(item => item.Hall).FirstOrDefault();
-            Hall.Content = hall.Number;
+            hall = Connection.db.Timetable.Where(item => item.ID == idTimetable).Select(item => item.Hall).FirstOrDefault();
+            Hall.Content = hall.ID;
 
             int tempNumberOfSeat = 0;
+
             foreach (UIElement seat in Seats.Children)
             {
                 tempNumberOfSeat++;
@@ -49,11 +51,13 @@ namespace Kinomaks.ElementsWindows
                     continue;
                 }
 
-                if (Connection.db.HallTimetable.Where(item => item.IDTimetable == idTimetable).Select(item => item.IDPlace).Contains(tempNumberOfSeat))
+                if (Connection.db.UserTicket.Where(item => item.Timetable.ID == idTimetable).Select(item => item.IDPlace).Contains(tempNumberOfSeat))
                 {
                     ((Button)seat).Background = Brushes.Red;
                 }
             }
+
+            Price.Content = string.Format("{0:f2}", film.Price);
         }
 
         private void ClickOnCell(object sender, MouseButtonEventArgs e)
@@ -70,24 +74,15 @@ namespace Kinomaks.ElementsWindows
                 ((Button)sender).Background = Brushes.Blue;
 
                 numberOfSeats.Add((Grid.GetRow((Button)sender) * 10) + 1 + Grid.GetColumn((Button)sender) + 1);
-
-                CountOfSeats.Content = numberOfSeats.Count;
             }    
             else if (((Button)sender).Background == Brushes.Blue)
             {
                 ((Button)sender).Background = color;
 
                 numberOfSeats.Remove((Grid.GetRow((Button)sender) * 10) + 1 + Grid.GetColumn((Button)sender) + 1);
-
-                CountOfSeats.Content = numberOfSeats.Count;
             }
-        }
 
-        private void BackButtonClick(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            CountOfSeats.Content = numberOfSeats.Count;
         }
 
         private void BuyButtonClick(object sender, RoutedEventArgs e)
@@ -99,8 +94,15 @@ namespace Kinomaks.ElementsWindows
                 return;
             }
 
-            PaymentMethod paymentMethod = new PaymentMethod(film.ID, numberOfSeats, idTimetable, hall.ID);
+            PaymentMethod paymentMethod = new PaymentMethod(film.ID, numberOfSeats, idTimetable);
             paymentMethod.Show();
+            this.Close();
+        }
+
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
     }

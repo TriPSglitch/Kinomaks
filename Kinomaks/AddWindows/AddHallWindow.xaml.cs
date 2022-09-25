@@ -44,7 +44,6 @@ namespace Kinomaks.AddWindows
             }
 
             int countOfSeats = 0;
-
             foreach (UIElement item in Seats.Children)
             {
                 countOfSeats++;
@@ -53,6 +52,14 @@ namespace Kinomaks.AddWindows
             if (countOfSeats == 0)
             {
                 ErrorWindow errorWindow = new ErrorWindow("пустой зал");
+                errorWindow.Show();
+                return;
+            }
+
+            int tempResult;
+            if (!int.TryParse(Number.Text, out tempResult))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("номер указан неверно");
                 errorWindow.Show();
                 return;
             }

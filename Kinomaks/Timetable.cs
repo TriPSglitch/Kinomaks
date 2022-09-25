@@ -18,15 +18,18 @@ namespace Kinomaks
         public Timetable()
         {
             this.FilmTimetable = new HashSet<FilmTimetable>();
-            this.HallTimetable = new HashSet<HallTimetable>();
+            this.UserTicket = new HashSet<UserTicket>();
         }
     
         public int ID { get; set; }
-        public System.DateTime Time { get; set; }
+        public System.TimeSpan Time { get; set; }
+        public System.DateTime Date { get; set; }
+        public int IDHall { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FilmTimetable> FilmTimetable { get; set; }
+        public virtual Hall Hall { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HallTimetable> HallTimetable { get; set; }
+        public virtual ICollection<UserTicket> UserTicket { get; set; }
     }
 }

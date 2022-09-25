@@ -31,16 +31,6 @@
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="CountOfSeats" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="HallTimetable">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDHall" Type="int" Nullable="false" />
-          <Property Name="IDTimetable" Type="int" Nullable="false" />
-          <Property Name="IDPlace" Type="int" Nullable="false" />
-          <Property Name="IDUser" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Places">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,7 +61,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IDHall" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -85,6 +77,15 @@
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IDRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTicket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTimetable" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IDPlace" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_FilmTimetable_Films">
           <End Role="Films" Type="Self.Films" Multiplicity="1" />
@@ -110,42 +111,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HallTimetable_Hall">
-          <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
-          <End Role="HallTimetable" Type="Self.HallTimetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hall">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HallTimetable">
-              <PropertyRef Name="IDHall" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HallTimetable_Timetable">
-          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
-          <End Role="HallTimetable" Type="Self.HallTimetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Timetable">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HallTimetable">
-              <PropertyRef Name="IDTimetable" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HallTimetable_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="HallTimetable" Type="Self.HallTimetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HallTimetable">
-              <PropertyRef Name="IDUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Places_Hall">
           <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
           <End Role="Places" Type="Self.Places" Multiplicity="*" />
@@ -154,6 +119,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Places">
+              <PropertyRef Name="IDHall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Hall">
+          <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hall">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Timetable">
               <PropertyRef Name="IDHall" />
             </Dependent>
           </ReferentialConstraint>
@@ -170,16 +147,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserTicket_Timetable">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="UserTicket" Type="Self.UserTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTicket">
+              <PropertyRef Name="IDTimetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTicket_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTicket" Type="Self.UserTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTicket">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище KinomaksModelContainer">
           <EntitySet Name="Films" EntityType="Self.Films" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FilmTimetable" EntityType="Self.FilmTimetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hall" EntityType="Self.Hall" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HallTimetable" EntityType="Self.HallTimetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Places" EntityType="Self.Places" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTicket" EntityType="Self.UserTicket" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_FilmTimetable_Films" Association="Self.FK_FilmTimetable_Films">
             <End Role="Films" EntitySet="Films" />
             <End Role="FilmTimetable" EntitySet="FilmTimetable" />
@@ -188,25 +189,25 @@
             <End Role="Timetable" EntitySet="Timetable" />
             <End Role="FilmTimetable" EntitySet="FilmTimetable" />
           </AssociationSet>
-          <AssociationSet Name="FK_HallTimetable_Hall" Association="Self.FK_HallTimetable_Hall">
-            <End Role="Hall" EntitySet="Hall" />
-            <End Role="HallTimetable" EntitySet="HallTimetable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HallTimetable_Timetable" Association="Self.FK_HallTimetable_Timetable">
-            <End Role="Timetable" EntitySet="Timetable" />
-            <End Role="HallTimetable" EntitySet="HallTimetable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HallTimetable_Users" Association="Self.FK_HallTimetable_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="HallTimetable" EntitySet="HallTimetable" />
-          </AssociationSet>
           <AssociationSet Name="FK_Places_Hall" Association="Self.FK_Places_Hall">
             <End Role="Hall" EntitySet="Hall" />
             <End Role="Places" EntitySet="Places" />
           </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Hall" Association="Self.FK_Timetable_Hall">
+            <End Role="Hall" EntitySet="Hall" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTicket_Timetable" Association="Self.FK_UserTicket_Timetable">
+            <End Role="Timetable" EntitySet="Timetable" />
+            <End Role="UserTicket" EntitySet="UserTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTicket_Users" Association="Self.FK_UserTicket_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTicket" EntitySet="UserTicket" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -242,21 +243,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="CountOfSeats" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HallTimetable" Relationship="Self.FK_HallTimetable_Hall" FromRole="Hall" ToRole="HallTimetable" />
           <NavigationProperty Name="Places" Relationship="Self.FK_Places_Hall" FromRole="Hall" ToRole="Places" />
-        </EntityType>
-        <EntityType Name="HallTimetable">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDHall" Type="Int32" Nullable="false" />
-          <Property Name="IDTimetable" Type="Int32" Nullable="false" />
-          <Property Name="IDPlace" Type="Int32" Nullable="false" />
-          <Property Name="IDUser" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Hall" Relationship="Self.FK_HallTimetable_Hall" FromRole="HallTimetable" ToRole="Hall" />
-          <NavigationProperty Name="Timetable" Relationship="Self.FK_HallTimetable_Timetable" FromRole="HallTimetable" ToRole="Timetable" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_HallTimetable_Users" FromRole="HallTimetable" ToRole="Users" />
+          <NavigationProperty Name="Timetable" Relationship="Self.FK_Timetable_Hall" FromRole="Hall" ToRole="Timetable" />
         </EntityType>
         <EntityType Name="Places">
           <Key>
@@ -290,9 +278,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDHall" Type="Int32" Nullable="false" />
           <NavigationProperty Name="FilmTimetable" Relationship="Self.FK_FilmTimetable_Timetable" FromRole="Timetable" ToRole="FilmTimetable" />
-          <NavigationProperty Name="HallTimetable" Relationship="Self.FK_HallTimetable_Timetable" FromRole="Timetable" ToRole="HallTimetable" />
+          <NavigationProperty Name="Hall" Relationship="Self.FK_Timetable_Hall" FromRole="Timetable" ToRole="Hall" />
+          <NavigationProperty Name="UserTicket" Relationship="Self.FK_UserTicket_Timetable" FromRole="Timetable" ToRole="UserTicket" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -306,8 +297,19 @@
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDRole" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HallTimetable" Relationship="Self.FK_HallTimetable_Users" FromRole="Users" ToRole="HallTimetable" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="UserTicket" Relationship="Self.FK_UserTicket_Users" FromRole="Users" ToRole="UserTicket" />
+        </EntityType>
+        <EntityType Name="UserTicket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTimetable" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IDPlace" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Timetable" Relationship="Self.FK_UserTicket_Timetable" FromRole="UserTicket" ToRole="Timetable" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserTicket_Users" FromRole="UserTicket" ToRole="Users" />
         </EntityType>
         <Association Name="FK_FilmTimetable_Films">
           <End Role="Films" Type="Self.Films" Multiplicity="1" />
@@ -333,18 +335,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HallTimetable_Hall">
-          <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
-          <End Role="HallTimetable" Type="Self.HallTimetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hall">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HallTimetable">
-              <PropertyRef Name="IDHall" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Places_Hall">
           <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
           <End Role="Places" Type="Self.Places" Multiplicity="*" />
@@ -357,27 +347,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HallTimetable_Timetable">
-          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
-          <End Role="HallTimetable" Type="Self.HallTimetable" Multiplicity="*" />
+        <Association Name="FK_Timetable_Hall">
+          <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Timetable">
+            <Principal Role="Hall">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="HallTimetable">
-              <PropertyRef Name="IDTimetable" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HallTimetable_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="HallTimetable" Type="Self.HallTimetable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HallTimetable">
-              <PropertyRef Name="IDUser" />
+            <Dependent Role="Timetable">
+              <PropertyRef Name="IDHall" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -393,16 +371,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserTicket_Timetable">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="UserTicket" Type="Self.UserTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTicket">
+              <PropertyRef Name="IDTimetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTicket_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserTicket" Type="Self.UserTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTicket">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KinomaksEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Films" EntityType="Self.Films" />
           <EntitySet Name="FilmTimetable" EntityType="Self.FilmTimetable" />
           <EntitySet Name="Hall" EntityType="Self.Hall" />
-          <EntitySet Name="HallTimetable" EntityType="Self.HallTimetable" />
           <EntitySet Name="Places" EntityType="Self.Places" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserTicket" EntityType="Self.UserTicket" />
           <AssociationSet Name="FK_FilmTimetable_Films" Association="Self.FK_FilmTimetable_Films">
             <End Role="Films" EntitySet="Films" />
             <End Role="FilmTimetable" EntitySet="FilmTimetable" />
@@ -411,25 +413,25 @@
             <End Role="Timetable" EntitySet="Timetable" />
             <End Role="FilmTimetable" EntitySet="FilmTimetable" />
           </AssociationSet>
-          <AssociationSet Name="FK_HallTimetable_Hall" Association="Self.FK_HallTimetable_Hall">
-            <End Role="Hall" EntitySet="Hall" />
-            <End Role="HallTimetable" EntitySet="HallTimetable" />
-          </AssociationSet>
           <AssociationSet Name="FK_Places_Hall" Association="Self.FK_Places_Hall">
             <End Role="Hall" EntitySet="Hall" />
             <End Role="Places" EntitySet="Places" />
           </AssociationSet>
-          <AssociationSet Name="FK_HallTimetable_Timetable" Association="Self.FK_HallTimetable_Timetable">
+          <AssociationSet Name="FK_Timetable_Hall" Association="Self.FK_Timetable_Hall">
+            <End Role="Hall" EntitySet="Hall" />
             <End Role="Timetable" EntitySet="Timetable" />
-            <End Role="HallTimetable" EntitySet="HallTimetable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HallTimetable_Users" Association="Self.FK_HallTimetable_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="HallTimetable" EntitySet="HallTimetable" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTicket_Timetable" Association="Self.FK_UserTicket_Timetable">
+            <End Role="Timetable" EntitySet="Timetable" />
+            <End Role="UserTicket" EntitySet="UserTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTicket_Users" Association="Self.FK_UserTicket_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserTicket" EntitySet="UserTicket" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -467,17 +469,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HallTimetable">
-            <EntityTypeMapping TypeName="KinomaksModel.HallTimetable">
-              <MappingFragment StoreEntitySet="HallTimetable">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDHall" ColumnName="IDHall" />
-                <ScalarProperty Name="IDTimetable" ColumnName="IDTimetable" />
-                <ScalarProperty Name="IDPlace" ColumnName="IDPlace" />
-                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Places">
             <EntityTypeMapping TypeName="KinomaksModel.Places">
               <MappingFragment StoreEntitySet="Places">
@@ -511,6 +502,8 @@
               <MappingFragment StoreEntitySet="Timetable">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IDHall" ColumnName="IDHall" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -525,6 +518,16 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTicket">
+            <EntityTypeMapping TypeName="KinomaksModel.UserTicket">
+              <MappingFragment StoreEntitySet="UserTicket">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDTimetable" ColumnName="IDTimetable" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDPlace" ColumnName="IDPlace" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

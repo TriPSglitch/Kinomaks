@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace Kinomaks.AddWindows
@@ -21,26 +22,28 @@ namespace Kinomaks.AddWindows
             #endregion
         }
 
-        private void BackButtonClick(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        }
-
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
             #region Добавление фильма
-            if (Title.Text == "")
+            if (Title.Text == "" || Price.Text == "")
             {
                 ErrorWindow errorWindow = new ErrorWindow("пустые поля");
                 errorWindow.Show();
                 return;
             }
 
+            decimal tempResult;
+            if (!decimal.TryParse(Price.Text, out tempResult))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("цена указана неверно");
+                errorWindow.Show();
+                return;
+            }
+
             Films film = new Films()
             {
-                Title = Title.Text
+                Title = Title.Text,
+                Price = Convert.ToDecimal(Price.Text)
             };
 
             if (Description.Text != null)
@@ -56,6 +59,13 @@ namespace Kinomaks.AddWindows
             mainWindow.Show();
             this.Close();
             #endregion
+        }
+
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Kinomaks.ListWindows;
 using Kinomaks.AddWindows;
+using Kinomaks.ElementsWindows;
 
 namespace Kinomaks
 {
@@ -52,8 +53,8 @@ namespace Kinomaks
 
         private void TimetableListClick(object sender, RoutedEventArgs e)
         {
-            //TimetableListWindow timetableListWindow = new TimetableListWindow();
-            //timetableListWindow.Show();
+            TimetableWindow timetableWindow = new TimetableWindow();
+            timetableWindow.Show();
             this.Close();
         }
         #endregion

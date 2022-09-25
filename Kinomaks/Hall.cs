@@ -17,8 +17,8 @@ namespace Kinomaks
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Hall()
         {
-            this.HallTimetable = new HashSet<HallTimetable>();
             this.Places = new HashSet<Places>();
+            this.Timetable = new HashSet<Timetable>();
         }
     
         public int ID { get; set; }
@@ -26,8 +26,8 @@ namespace Kinomaks
         public int CountOfSeats { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HallTimetable> HallTimetable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Places> Places { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Timetable> Timetable { get; set; }
     }
 }

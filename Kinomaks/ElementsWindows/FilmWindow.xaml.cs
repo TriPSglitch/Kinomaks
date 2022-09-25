@@ -15,7 +15,15 @@ namespace Kinomaks.ElementsWindows
             InitializeComponent();
             film = Connection.db.Films.Where(item => item.ID == id).FirstOrDefault();
             Title.Content = film.Title;
+            Price.Content = string.Format("{0:f2}", film.Price);
             Logo.Source = ImagesManip.NewImage(film);
+        }
+
+        private void GoToTimetableClick(object sender, RoutedEventArgs e)
+        {
+            TimetableWindow timetableWindow = new TimetableWindow(film.ID);
+            timetableWindow.Show();
+            this.Close();
         }
 
         private void BackButtonClick(object sender, RoutedEventArgs e)

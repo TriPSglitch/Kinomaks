@@ -11,21 +11,19 @@ namespace Kinomaks.ElementsWindows
         int idFilm;
         List<int> numberOfSeats;
         int idTimetable;
-        int idHall;
 
-        public PaymentMethod(int idFilm, List<int> numberOfSeats, int idTimetable, int idHall)
+        public PaymentMethod(int idFilm, List<int> numberOfSeats, int idTimetable)
         {
             InitializeComponent();
 
             this.idFilm = idFilm;
             this.numberOfSeats = numberOfSeats;
             this.idTimetable = idTimetable;
-            this.idHall = idHall;
         }
 
         private void CashButtonClick(object sender, RoutedEventArgs e)
         {
-            PaymentWindow paymentWindow = new PaymentWindow(idFilm, numberOfSeats, idTimetable, idHall);
+            PaymentWindow paymentWindow = new PaymentWindow(idFilm, numberOfSeats, idTimetable);
             paymentWindow.Show();
             this.Close();
         }

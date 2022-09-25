@@ -12,25 +12,23 @@ namespace Kinomaks.ElementsWindows
         int idFilm;
         List<int> numberOfSeats;
         int idTimetable;
-        int idHall;
 
-        public PaymentWindow(int idFilm, List<int> numberOfSeats, int idTimetable, int idHall)
+        public PaymentWindow(int idFilm, List<int> numberOfSeats, int idTimetable)
         {
             InitializeComponent();
 
             this.idFilm = idFilm;
             this.numberOfSeats = numberOfSeats;
             this.idTimetable = idTimetable;
-            this.idHall = idHall;
 
-            ToPay.Content = Connection.db.Films.Where(item => item.ID == this.idFilm).Select(item => item.Price).FirstOrDefault() * this.numberOfSeats.Count();
+            ToPay.Content = string.Format("{0:f2}", Connection.db.Films.Where(item => item.ID == this.idFilm).Select(item => item.Price).FirstOrDefault() * this.numberOfSeats.Count());
             Payment();
         }
 
         void Payment()
         {
             Buyer buyer = new Buyer();
-            buyer.DoBuy(new BuyCash(idFilm, numberOfSeats, idTimetable, idHall));
+            buyer.DoBuy(new BuyCash(idFilm, numberOfSeats, idTimetable));
         }
 
         private void PaidButtonClick(object sender, RoutedEventArgs e)
@@ -42,7 +40,7 @@ namespace Kinomaks.ElementsWindows
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            PaymentMethod paymentMethod = new PaymentMethod(idFilm, numberOfSeats, idTimetable, idHall);
+            PaymentMethod paymentMethod = new PaymentMethod(idFilm, numberOfSeats, idTimetable);
             paymentMethod.Show();
             this.Close();
         }

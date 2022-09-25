@@ -40,7 +40,7 @@ namespace Kinomaks.ListWindows
         {
             if (Search.Text != "" && Search.Text != "Поиск")
             {
-                FilmsList.ItemsSource = Connection.db.Films.Where(item => (item.Title + " " + item.Descripton).Contains(Search.Text)).ToList();
+                FilmsList.ItemsSource = Connection.db.Films.Where(item => (item.Title + " " + item.Descripton + " " + item.Price).Contains(Search.Text)).ToList();
             }
             else if (Search.Text == "" || Search.Text == "Поиск")
             {

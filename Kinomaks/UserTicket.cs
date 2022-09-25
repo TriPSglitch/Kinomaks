@@ -12,15 +12,13 @@ namespace Kinomaks
     using System;
     using System.Collections.Generic;
     
-    public partial class HallTimetable
+    public partial class UserTicket
     {
         public int ID { get; set; }
-        public int IDHall { get; set; }
         public int IDTimetable { get; set; }
-        public int IDPlace { get; set; }
         public int IDUser { get; set; }
+        public int IDPlace { get; set; }
     
-        public virtual Hall Hall { get; set; }
         public virtual Timetable Timetable { get; set; }
         public virtual Users Users { get; set; }
     }

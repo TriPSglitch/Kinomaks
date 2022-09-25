@@ -28,11 +28,11 @@ namespace Kinomaks
         public virtual DbSet<Films> Films { get; set; }
         public virtual DbSet<FilmTimetable> FilmTimetable { get; set; }
         public virtual DbSet<Hall> Hall { get; set; }
-        public virtual DbSet<HallTimetable> HallTimetable { get; set; }
         public virtual DbSet<Places> Places { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Timetable> Timetable { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<UserTicket> UserTicket { get; set; }
     }
 }
