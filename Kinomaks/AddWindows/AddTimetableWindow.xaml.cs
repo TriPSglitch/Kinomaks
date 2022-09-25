@@ -49,6 +49,14 @@ namespace Kinomaks.AddWindows
                 return;
             }
 
+            if (Connection.db.Timetable.Select(item => item.Time + " " + item.Date + " " + item.Hall).Contains(timeResult + " " + dateResult + " " +
+                Connection.db.Hall.Where(item => item.Number == Convert.ToInt32(Hall.SelectedItem)).Select(item => item.ID).FirstOrDefault()))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("зал уже занят");
+                errorWindow.Show();
+                return;
+            }
+
             Timetable timetable = new Timetable()
             {
                 Time = timeResult,

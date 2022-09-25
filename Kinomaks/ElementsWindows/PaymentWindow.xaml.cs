@@ -12,6 +12,7 @@ namespace Kinomaks.ElementsWindows
         int idFilm;
         List<int> numberOfSeats;
         int idTimetable;
+        string cheque;
 
         public PaymentWindow(int idFilm, List<int> numberOfSeats, int idTimetable)
         {
@@ -37,6 +38,7 @@ namespace Kinomaks.ElementsWindows
             mainWindow.Show();
             this.Close();
         }
+
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
