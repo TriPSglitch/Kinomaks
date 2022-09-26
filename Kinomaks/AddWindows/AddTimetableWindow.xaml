@@ -14,9 +14,9 @@
         <Button x:Name="BackButton"  Content="Назад" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Height="39" Width="140" FontSize="25" Click="BackButtonClick"/>
         <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Center" Margin="0,792,0,0" VerticalAlignment="Top" Height="60" Width="180" FontSize="36" Click="AddButtonClick" />
         <Label Content="Зал №:" HorizontalAlignment="Left" Margin="449,410,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <ComboBox x:Name="Hall" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="316" Foreground="White" FontSize="36" Margin="629,410,0,0"/>
+        <ComboBox x:Name="Hall" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="316" Foreground="Black" FontSize="36" Margin="629,410,0,0"/>
         <Label Content="Фильм:" HorizontalAlignment="Left" Margin="449,504,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <ComboBox x:Name="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" Foreground="White" FontSize="36" Margin="629,504,0,0"/>
+        <ComboBox x:Name="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" Foreground="Black" FontSize="36" Margin="629,504,0,0"/>
 
     </Grid>
 </Window>

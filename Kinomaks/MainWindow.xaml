@@ -10,9 +10,9 @@
         <TabControl BorderThickness="0">
             <TabItem Header="Главная" Height="20" Width="100" Background="#FF4F5856">
                 <Grid Margin="-3,-22,-3,-2">
-                    <Button Name="FilmsList" Content="Фильмы" HorizontalAlignment="Center" Margin="0,314,0,0" VerticalAlignment="Top" Height="70" Width="222" FontSize="36" Click="FilmsListClick"/>
-                    <Button Name="Tabletime" Content="Расписание" HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="222" FontSize="36" Click="TimetableListClick"/>
-                    <Button x:Name="Return" Content="Возврат" HorizontalAlignment="Center" Margin="0,498,0,0" VerticalAlignment="Top" Height="70" Width="222" FontSize="36" Click="ReturnClick"/>
+                    <Button Name="FilmsList" Content="Фильмы" HorizontalAlignment="Center" Margin="0,316,0,0" VerticalAlignment="Top" Height="70" Width="222" FontSize="36" Click="FilmsListClick"/>
+                    <Button Name="Tabletime" Content="Расписание" HorizontalAlignment="Center" VerticalAlignment="Top" Height="70" Width="222" FontSize="36" Click="TimetableListClick" Margin="0,408,0,0"/>
+                    <Button x:Name="Return" Content="Возврат" HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Top" Height="70" Width="222" FontSize="36" Click="ReturnClick"/>
                 </Grid>
             </TabItem>
             <TabItem Name="AddItem" Header="Добавить" Height="20" Width="100" Background="#FF4F5856">

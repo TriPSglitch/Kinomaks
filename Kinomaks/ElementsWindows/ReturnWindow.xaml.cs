@@ -28,7 +28,7 @@ namespace Kinomaks.ElementsWindows
             DateTime date = Connection.db.UserTicket.Where(item => item.ID == cheque).Select(item => item.Timetable.Date).FirstOrDefault();
             TimeSpan time = Connection.db.UserTicket.Where(item => item.ID == cheque).Select(item => item.Timetable.Time).FirstOrDefault();
 
-            if (now.Date >= date || (now.Date == date && now.TimeOfDay > time))
+            if (now.Date > date || (now.Date == date && now.TimeOfDay >= time))
             {
                 ErrorWindow errorWindow = new ErrorWindow("вы уже не можете вернуть этот билет");
                 errorWindow.Show();

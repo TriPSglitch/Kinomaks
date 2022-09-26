@@ -46,6 +46,9 @@ namespace Kinomaks.AddWindows
             int countOfSeats = 0;
             foreach (UIElement item in Seats.Children)
             {
+                if (((Button)item).Background == Brushes.Red)
+                    continue;
+
                 countOfSeats++;
             }
 

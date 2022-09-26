@@ -25,7 +25,7 @@ namespace Kinomaks.ElementsWindows
 
         private void FilmsListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int idTimetable = ((FilmTimetable)sender).IDTimeTable;
+            int idTimetable = ((FilmTimetable)FilmsList.SelectedItem).IDTimeTable;
             BuyingATicket buyingATicket = new BuyingATicket(idTimetable);
             buyingATicket.Show();
             this.Close();

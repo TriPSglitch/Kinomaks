@@ -15,6 +15,7 @@ namespace Kinomaks.AddWindows
         public AddTimetableWindow()
         {
             InitializeComponent();
+            Hall.ItemsSource = Connection.db.Hall.Select(item => item.Number).ToList();
             Film.ItemsSource = Connection.db.Films.Select(items => items.Title).ToList();
         }
         private void AddButtonClick(object sender, RoutedEventArgs e)
@@ -49,8 +50,10 @@ namespace Kinomaks.AddWindows
                 return;
             }
 
-            if (Connection.db.Timetable.Select(item => item.Time + " " + item.Date + " " + item.Hall).Contains(timeResult + " " + dateResult + " " +
-                Connection.db.Hall.Where(item => item.Number == Convert.ToInt32(Hall.SelectedItem)).Select(item => item.ID).FirstOrDefault()))
+            Hall selectedHall = Connection.db.Hall.Where(item => item.Number == (int)Hall.SelectedItem).FirstOrDefault();
+
+            if (Connection.db.Timetable.Select(item => item.Time + " " + item.Date + " " + item.IDHall).Contains(timeResult + " " + dateResult + " " +
+                                            selectedHall.ID))
             {
                 ErrorWindow errorWindow = new ErrorWindow("зал уже занят");
                 errorWindow.Show();
@@ -61,20 +64,26 @@ namespace Kinomaks.AddWindows
             {
                 Time = timeResult,
                 Date = dateResult,
-                IDHall = Connection.db.Hall.Where(item => item.Number == Convert.ToInt32(Hall.SelectedItem)).Select(item => item.ID).FirstOrDefault()
+                IDHall = selectedHall.ID
             };
 
             Connection.db.Timetable.Add(timetable);
             Connection.db.SaveChanges();
 
+            Films selectedFilm = Connection.db.Films.Where(item => item.Title == Film.SelectedItem.ToString()).FirstOrDefault();
+
             FilmTimetable filmTimetable = new FilmTimetable()
             {
-                IDFilm = Connection.db.Films.Where(item => item.Title == Film.Text).Select(item => item.ID).FirstOrDefault(),
+                IDFilm = selectedFilm.ID,
                 IDTimeTable = Connection.db.Timetable.Max(item => item.ID)
             };
 
             Connection.db.FilmTimetable.Add(filmTimetable);
             Connection.db.SaveChanges();
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
             #endregion
         }
 
