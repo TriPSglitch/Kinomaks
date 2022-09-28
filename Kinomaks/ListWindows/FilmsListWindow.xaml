@@ -16,7 +16,7 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Название фильма" Width="300" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Title}" Header="Название фильма" Width="300" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Price}" Header="Цена" Width="100" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="600" IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="Лого" Width="300">

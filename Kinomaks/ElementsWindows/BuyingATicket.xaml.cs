@@ -35,7 +35,8 @@ namespace Kinomaks.ElementsWindows
             Title.Content = film.Title;
             Logo.Source = ImagesManip.NewImage(film);
 
-            Time.Content = Connection.db.Timetable.Where(item => item.ID == idTimetable).Select(item => item.Time + " " + item.Date).FirstOrDefault();
+            Time.Content = Connection.db.Timetable.Where(item => item.ID == idTimetable).Select(item => item.Time.Hours + ":" + item.Time.Minutes
+                                                        + ":" + item.Time.Seconds + " " + item.Date.Day + "." + item.Date.Month + "." + item.Date.Year).FirstOrDefault();
 
             hall = Connection.db.Timetable.Where(item => item.ID == idTimetable).Select(item => item.Hall).FirstOrDefault();
             Hall.Content = hall.ID;
@@ -56,6 +57,8 @@ namespace Kinomaks.ElementsWindows
                     ((Button)seat).Background = Brushes.Red;
                 }
             }
+
+            Cinema.Content = Connection.db.Hall.Where(item => item.ID == hall.ID).Select(item => item.Cinema.Name).FirstOrDefault();
 
             Price.Content = string.Format("{0:f2}", film.Price);
         }
@@ -101,8 +104,8 @@ namespace Kinomaks.ElementsWindows
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            TimetableWindow timetableWindow = new TimetableWindow();
+            timetableWindow.Show();
             this.Close();
         }
     }

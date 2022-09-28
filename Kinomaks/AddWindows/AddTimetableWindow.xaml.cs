@@ -15,7 +15,7 @@ namespace Kinomaks.AddWindows
         public AddTimetableWindow()
         {
             InitializeComponent();
-            Hall.ItemsSource = Connection.db.Hall.Select(item => item.Number).ToList();
+            Cinema.ItemsSource = Connection.db.Cinema.Select(item => item.Name).ToList();
             Film.ItemsSource = Connection.db.Films.Select(items => items.Title).ToList();
         }
         private void AddButtonClick(object sender, RoutedEventArgs e)
@@ -50,10 +50,12 @@ namespace Kinomaks.AddWindows
                 return;
             }
 
-            Hall selectedHall = Connection.db.Hall.Where(item => item.Number == (int)Hall.SelectedItem).FirstOrDefault();
+            Cinema selectedCinema = Connection.db.Cinema.Where(item => item.Name == Cinema.SelectedItem.ToString()).FirstOrDefault();
 
-            if (Connection.db.Timetable.Select(item => item.Time + " " + item.Date + " " + item.IDHall).Contains(timeResult + " " + dateResult + " " +
-                                            selectedHall.ID))
+            Hall selectedHall = Connection.db.Hall.Where(item => item.Number == (int)Hall.SelectedItem && item.IDCinema == selectedCinema.ID).FirstOrDefault();
+
+            if (Connection.db.Timetable.Select(item => item.Time + " " + item.Date + " " + item.IDHall + " " + item.Hall.IDCinema).Contains(timeResult + " " + dateResult + " " +
+                                            selectedHall.ID + " " + selectedCinema.ID))
             {
                 ErrorWindow errorWindow = new ErrorWindow("зал уже занят");
                 errorWindow.Show();
@@ -85,6 +87,13 @@ namespace Kinomaks.AddWindows
             mainWindow.Show();
             this.Close();
             #endregion
+        }
+
+        private void CinemaSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Cinema cinema = Connection.db.Cinema.Where(item => item.Name == Cinema.SelectedItem.ToString()).FirstOrDefault();
+
+            Hall.ItemsSource = Connection.db.Hall.Where(item => item.IDCinema == cinema.ID).Select(item => item.Number).ToList();
         }
 
         private void DateTextChanged(object sender, TextChangedEventArgs e)

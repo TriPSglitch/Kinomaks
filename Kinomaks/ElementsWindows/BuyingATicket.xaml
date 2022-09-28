@@ -143,14 +143,16 @@
         </Grid>
         <Label Content="Название:" HorizontalAlignment="Left" Margin="36,176,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
         <Label x:Name="Title" HorizontalAlignment="Left" Margin="218,176,0,0" VerticalAlignment="Top" Height="60" Width="700" FontSize="36" Foreground="White"/>
-        <Image x:Name="Logo" HorizontalAlignment="Left" Margin="34,246,0,0" Width="307" Height="372" VerticalAlignment="Top"/>
+        <Image x:Name="Logo" HorizontalAlignment="Left" Margin="34,285,0,0" Width="307" Height="372" VerticalAlignment="Top"/>
         <Label Content="Дата и время:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,285,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
         <Label x:Name="Time" Content="" HorizontalAlignment="Center" Margin="0,285,0,0" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36"/>
         <Label Content="Зал №:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,366,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
         <Label x:Name="Hall" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36" Margin="0,366,0,0"/>
-        <Label Content="Цена:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,447,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
-        <Label x:Name="Price" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36" Margin="0,447,0,0"/>
-        <Label Content="Мест:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,528,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
-        <Label x:Name="CountOfSeats" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36" Margin="0,528,0,0"/>
+        <Label Content="Кинотеатр:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,447,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
+        <Label x:Name="Cinema" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36" Margin="0,447,0,0"/>
+        <Label Content="Цена:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,528,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
+        <Label x:Name="Price" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36" Margin="0,528,0,0"/>
+        <Label Content="Мест:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="363,609,0,0" VerticalAlignment="Top" Height="60" Width="252" Foreground="White" FontSize="36"/>
+        <Label x:Name="CountOfSeats" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="60" Width="364" Foreground="White" FontSize="36" Margin="0,609,0,0"/>
     </Grid>
 </Window>

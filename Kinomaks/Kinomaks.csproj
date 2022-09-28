@@ -98,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWindows\AddCinemaWindwow.xaml.cs">
+      <DependentUpon>AddCinemaWindwow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddWindows\AddFilmWindow.xaml.cs">
       <DependentUpon>AddFilmWindow.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,9 @@
     </Compile>
     <Compile Include="BuyCash.cs" />
     <Compile Include="Buyer.cs" />
+    <Compile Include="Cinema.cs">
+      <DependentUpon>KinomaksDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="ElementsWindows\BuyingATicket.xaml.cs">
       <DependentUpon>BuyingATicket.xaml</DependentUpon>
@@ -153,6 +159,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KinomaksDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ListWindows\CinemaListWindow.xaml.cs">
+      <DependentUpon>CinemaListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListWindows\FilmsListWindow.xaml.cs">
       <DependentUpon>FilmsListWindow.xaml</DependentUpon>
     </Compile>
@@ -181,6 +190,10 @@
     <Compile Include="UserTicket.cs">
       <DependentUpon>KinomaksDB.tt</DependentUpon>
     </Compile>
+    <Page Include="AddWindows\AddCinemaWindwow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddWindows\AddFilmWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListWindows\CinemaListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

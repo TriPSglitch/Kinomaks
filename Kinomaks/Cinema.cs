@@ -12,21 +12,21 @@ namespace Kinomaks
     using System;
     using System.Collections.Generic;
     
-    public partial class Films
+    public partial class Cinema
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Films()
+        public Cinema()
         {
-            this.FilmTimetable = new HashSet<FilmTimetable>();
+            this.Hall = new HashSet<Hall>();
         }
     
         public int ID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public byte[] Logo { get; set; }
-        public decimal Price { get; set; }
+        public string Name { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string Building { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FilmTimetable> FilmTimetable { get; set; }
+        public virtual ICollection<Hall> Hall { get; set; }
     }
 }

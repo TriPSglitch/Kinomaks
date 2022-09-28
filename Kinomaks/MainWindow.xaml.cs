@@ -41,6 +41,13 @@ namespace Kinomaks
             addHallWindow.Show();
             this.Close();
         }
+
+        private void AddCinemaClick(object sender, RoutedEventArgs e)
+        {
+            AddCinemaWindwow addCinemaWindwow = new AddCinemaWindwow();
+            addCinemaWindwow.Show();
+            this.Close();
+        }
         #endregion
 
         #region Окна списков
@@ -62,6 +69,13 @@ namespace Kinomaks
         {
             ReturnWindow returnWindow = new ReturnWindow();
             returnWindow.Show();
+            this.Close();
+        }
+
+        private void CinemaListClick(object sender, RoutedEventArgs e)
+        {
+            CinemaListWindow cinemaListWindow = new CinemaListWindow();
+            cinemaListWindow.Show();
             this.Close();
         }
         #endregion

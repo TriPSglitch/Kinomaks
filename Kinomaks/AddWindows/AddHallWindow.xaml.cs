@@ -18,6 +18,8 @@ namespace Kinomaks.AddWindows
         {
             InitializeComponent();
 
+            Cinema.ItemsSource = Connection.db.Cinema.Select(item => item.Name).ToList();
+
             foreach (UIElement item in Seats.Children)
             {
                 color = ((Button)item).Background;
@@ -67,8 +69,18 @@ namespace Kinomaks.AddWindows
                 return;
             }
 
+            Cinema cinema = Connection.db.Cinema.Where(item => item.Name == Cinema.SelectedItem.ToString()).Select(item => item).FirstOrDefault();
+
+            if (Connection.db.Hall.Select(item => item.Number + " " + item.IDCinema).Contains(Number.Text + " " + cinema.ID))
+            {
+                ErrorWindow errorWindow = new ErrorWindow("Такой зал в этом кинотеатре уже существует");
+                errorWindow.Show();
+                return;
+            }
+
             Hall hall = new Hall()
             {
+                IDCinema = cinema.ID,
                 Number = Convert.ToInt32(Number.Text),
                 CountOfSeats = countOfSeats
             };

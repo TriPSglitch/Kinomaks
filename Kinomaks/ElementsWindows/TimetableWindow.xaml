@@ -8,8 +8,8 @@
         Title="Расписание" Height="900" Width="1600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <Button Name="BackButton" Content="Назад" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Height="39" Width="140" FontSize="25" Click="BackButtonClick"/>
-        <ListBox Name="FilmsList" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1500" Height="500"
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="FilmsListSelectionChanged">
+        <ListBox Name="FilmsList" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1500" Height="600"
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="FilmsListSelectionChanged" Margin="0,176,0,0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -23,6 +23,8 @@
                         <Label Content="{Binding Films.Price}" Width="250" Foreground="White" FontSize="25" Height="50"/>
                         <Label Content="{Binding Timetable.Date}" Width="250" Foreground="White" FontSize="25" Height="50"/>
                         <Label Content="{Binding Timetable.Time}" Width="250" Foreground="White" FontSize="25" Height="50"/>
+                        <Label Content="{Binding Timetable.Hall.Number}" Width="250" Foreground="White" FontSize="25" Height="50"/>
+                        <Label Content="{Binding Timetable.Hall.Cinema.Name}" Width="250" Foreground="White" FontSize="25" Height="50"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

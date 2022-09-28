@@ -25,6 +25,7 @@ namespace Kinomaks
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cinema> Cinema { get; set; }
         public virtual DbSet<Films> Films { get; set; }
         public virtual DbSet<FilmTimetable> FilmTimetable { get; set; }
         public virtual DbSet<Hall> Hall { get; set; }

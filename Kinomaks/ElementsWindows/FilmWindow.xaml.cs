@@ -16,7 +16,7 @@ namespace Kinomaks.ElementsWindows
             film = Connection.db.Films.Where(item => item.ID == id).FirstOrDefault();
             Title.Content = film.Title;
             Price.Content = string.Format("{0:f2}", film.Price);
-            Description.Text = film.Descripton;
+            Description.Text = film.Description;
             Logo.Source = ImagesManip.NewImage(film);
         }
 

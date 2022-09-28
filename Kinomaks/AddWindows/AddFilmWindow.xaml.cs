@@ -47,7 +47,7 @@ namespace Kinomaks.AddWindows
             };
 
             if (Description.Text != null)
-                film.Descripton = Description.Text;
+                film.Description = Description.Text;
 
             if (Logo.Source != null)
                 film.Logo = ImagesManip.BitmapSourceToByteArray((BitmapSource)Logo.Source);

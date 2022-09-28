@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="afdbe7b076f74279979da4c86ececcda" Name="Diagram1">
-        <EntityTypeShape EntityType="KinomaksModel.Films" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.FilmTimetable" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.Hall" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.Places" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.Roles" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.Timetable" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.Users" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinomaksModel.UserTicket" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+      <Diagram DiagramId="90dd5f73f5a24a45844462bb5a7d037a" Name="Diagram1">
+        <EntityTypeShape EntityType="KinomaksModel.Cinema" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.Films" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.FilmTimetable" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.Hall" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.Places" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.Roles" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.Timetable" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.Users" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinomaksModel.UserTicket" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="KinomaksModel.FK_Hall_Cinema" ManuallyRouted="false" />
         <AssociationConnector Association="KinomaksModel.FK_FilmTimetable_Films" ManuallyRouted="false" />
         <AssociationConnector Association="KinomaksModel.FK_FilmTimetable_Timetable" ManuallyRouted="false" />
         <AssociationConnector Association="KinomaksModel.FK_Places_Hall" ManuallyRouted="false" />

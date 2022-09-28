@@ -7,16 +7,17 @@
         mc:Ignorable="d"
         Title="Добавление расписания" Height="900" Width="1600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <Label Content="Дата:" HorizontalAlignment="Left" Margin="449,222,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <TextBox x:Name="Date" HorizontalAlignment="Left" Margin="629,222,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="60" Width="316" FontSize="36" TextChanged="DateTextChanged"/>
-        <Label Content="Время:" HorizontalAlignment="Left" Margin="449,316,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <TextBox x:Name="Time" HorizontalAlignment="Left" Margin="629,316,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="60" Width="316" FontSize="36" TextChanged="TimeTextChanged"/>
-        <Button x:Name="BackButton"  Content="Назад" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Height="39" Width="140" FontSize="25" Click="BackButtonClick"/>
+        <Label Content="Дата:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,202,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <TextBox x:Name="Date" HorizontalAlignment="Left" Margin="629,202,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="60" Width="544" FontSize="36" TextChanged="DateTextChanged"/>
+        <Label Content="Время:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,296,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <TextBox x:Name="Time" HorizontalAlignment="Left" Margin="629,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="60" Width="544" FontSize="36" TextChanged="TimeTextChanged"/>
+        <Label Content="Кинотеатр:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,390,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <ComboBox x:Name="Cinema" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" Foreground="Black" FontSize="36" Margin="629,390,0,0" SelectionChanged="CinemaSelectionChanged"/>
+        <Label Content="Зал №:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,484,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <ComboBox x:Name="Hall" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" Foreground="Black" FontSize="36" Margin="629,484,0,0"/>
+        <Label Content="Фильм:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,578,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <ComboBox x:Name="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" Foreground="Black" FontSize="36" Margin="629,578,0,0"/>
+        <Button x:Name="BackButton" Content="Назад" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Height="39" Width="140" FontSize="25" Click="BackButtonClick"/>
         <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Center" Margin="0,792,0,0" VerticalAlignment="Top" Height="60" Width="180" FontSize="36" Click="AddButtonClick" />
-        <Label Content="Зал №:" HorizontalAlignment="Left" Margin="449,410,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <ComboBox x:Name="Hall" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="316" Foreground="Black" FontSize="36" Margin="629,410,0,0"/>
-        <Label Content="Фильм:" HorizontalAlignment="Left" Margin="449,504,0,0" VerticalAlignment="Top" Height="60" Width="180" Foreground="White" FontSize="36"/>
-        <ComboBox x:Name="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" Foreground="Black" FontSize="36" Margin="629,504,0,0"/>
-
     </Grid>
 </Window>

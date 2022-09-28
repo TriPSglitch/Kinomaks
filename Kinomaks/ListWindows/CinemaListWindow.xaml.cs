@@ -2,19 +2,18 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Kinomaks.ElementsWindows;
 
 namespace Kinomaks.ListWindows
 {
     /// <summary>
-    /// Логика взаимодействия для FilmsListWindow.xaml
+    /// Логика взаимодействия для CinemaListWindow.xaml
     /// </summary>
-    public partial class FilmsListWindow : Window
+    public partial class CinemaListWindow : Window
     {
-        public FilmsListWindow()
+        public CinemaListWindow()
         {
             InitializeComponent();
-            FilmsList.ItemsSource = Connection.db.Films.ToList();
+            CinemaList.ItemsSource = Connection.db.Cinema.ToList();
         }
 
         private void SearchPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -34,21 +33,13 @@ namespace Kinomaks.ListWindows
         {
             if (Search.Text != "" && Search.Text != "Поиск")
             {
-                FilmsList.ItemsSource = Connection.db.Films.Where(item => (item.Title + " " + item.Description + " " + item.Price).Contains(Search.Text)).ToList();
+                CinemaList.ItemsSource = Connection.db.Cinema.Where(item => (item.Name + " " + item.City + " " + item.Street + " " + item.Building).Contains(Search.Text)).ToList();
             }
             else if (Search.Text == "" || Search.Text == "Поиск")
             {
-                FilmsList.ItemsSource = Connection.db.Films.ToList();
+                CinemaList.ItemsSource = Connection.db.Cinema.ToList();
             }
             #endregion
-        }
-
-        private void FilmsListMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            int id = ((Films)FilmsList.SelectedItem).ID;
-            FilmWindow filmWindow = new FilmWindow(id);
-            filmWindow.Show();
-            this.Hide();
         }
 
         private void BackButtonClick(object sender, RoutedEventArgs e)

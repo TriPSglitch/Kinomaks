@@ -1,0 +1,21 @@
+﻿<Window x:Class="Kinomaks.AddWindows.AddCinemaWindwow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kinomaks.AddWindows"
+        mc:Ignorable="d"
+        Title="Добавление кинотеатра" Height="900" Width="1600" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Grid>
+        <Label Content="Название:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,244,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="629,244,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="60" Width="544" FontSize="36"/>
+        <Label Content="Город:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,338,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="629,338,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="60" Width="544" FontSize="36"/>
+        <Label Content="Улица:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,432,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <TextBox x:Name="Street" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="" Height="60" Width="544" FontSize="36" Margin="629,432,0,0"/>
+        <Label Content="Здание:" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="431,526,0,0" VerticalAlignment="Top" Height="60" Width="198" Foreground="White" FontSize="36"/>
+        <TextBox x:Name="Building" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="544" FontSize="36" Margin="629,526,0,0" TextWrapping="Wrap" Text=""/>
+        <Button x:Name="BackButton" Content="Назад" HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" Height="39" Width="140" FontSize="25" Click="BackButtonClick"/>
+        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Center" Margin="0,792,0,0" VerticalAlignment="Top" Height="60" Width="180" FontSize="36" Click="AddButtonClick" />
+    </Grid>
+</Window>

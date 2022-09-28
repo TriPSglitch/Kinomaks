@@ -22,9 +22,11 @@ namespace Kinomaks
         }
     
         public int ID { get; set; }
+        public int IDCinema { get; set; }
         public int Number { get; set; }
         public int CountOfSeats { get; set; }
     
+        public virtual Cinema Cinema { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Places> Places { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
